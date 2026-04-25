@@ -1,0 +1,255 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-jetbrains-mono);
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  /* Brand accents */
+  --color-smoke-accent: var(--smoke-accent);
+  --color-smoke-accent-dim: var(--smoke-accent-dim);
+  /* Red palette */
+  --color-r-accent: var(--r-accent);
+  --color-r-accent-dim: var(--r-accent-dim);
+  --color-r-border: var(--r-border);
+  --color-r-card: var(--r-card);
+  --color-r-card-hover: var(--r-card-hover);
+  --color-r-text-dim: var(--r-text-dim);
+  --color-green-pulse: var(--green-pulse);
+}
+
+/* ─── Dark atmospheric red-black palette ─── */
+:root {
+  /* Base tokens unchanged so shadcn components keep working */
+  --background: #080808;
+  --foreground: #f0f0f0;
+  --card: #111111;
+  --card-foreground: #f0f0f0;
+  --popover: #111111;
+  --popover-foreground: #f0f0f0;
+  --primary: #f0f0f0;
+  --primary-foreground: #080808;
+  --secondary: #1a1010;
+  --secondary-foreground: #f0f0f0;
+  --muted: #1a1010;
+  --muted-foreground: #6b7280;
+  --accent: #1a1010;
+  --accent-foreground: #f0f0f0;
+  --destructive: #c0392b;
+  --border: #2a1515;
+  --input: #2a1515;
+  --ring: #c0392b;
+  --radius: 0.625rem;
+
+  /* Smoke/legacy accent — keep for decompile section */
+  --smoke-accent: #c0392b;
+  --smoke-accent-dim: #7b1a1a;
+
+  /* Red palette design tokens */
+  --r-accent: #c0392b;
+  --r-accent-dim: #7b1a1a;
+  --r-border: #2a1515;
+  --r-card: #111111;
+  --r-card-hover: #1a1010;
+  --r-text-dim: #3d3d3d;
+  --green-pulse: #22c55e;
+
+  /* Sidebar */
+  --sidebar: #080808;
+  --sidebar-foreground: #f0f0f0;
+  --sidebar-primary: #c0392b;
+  --sidebar-primary-foreground: #f0f0f0;
+  --sidebar-accent: #1a1010;
+  --sidebar-accent-foreground: #f0f0f0;
+  --sidebar-border: #2a1515;
+  --sidebar-ring: #c0392b;
+
+  /* Charts */
+  --chart-1: #f0f0f0;
+  --chart-2: #6b7280;
+  --chart-3: #3d3d3d;
+  --chart-4: #2a1515;
+  --chart-5: #1a1010;
+
+  /* JetBrains Mono variable */
+  --font-jetbrains-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background-color: #080808;
+  }
+
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+}
+
+/* ─── Custom crosshair cursor ─── */
+* {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='1.5' fill='%23c0392b'/%3E%3Cline x1='10' y1='2' x2='10' y2='7' stroke='%23c0392b' stroke-width='1.2'/%3E%3Cline x1='10' y1='13' x2='10' y2='18' stroke='%23c0392b' stroke-width='1.2'/%3E%3Cline x1='2' y1='10' x2='7' y2='10' stroke='%23c0392b' stroke-width='1.2'/%3E%3Cline x1='13' y1='10' x2='18' y2='10' stroke='%23c0392b' stroke-width='1.2'/%3E%3C/svg%3E") 10 10, crosshair;
+}
+
+a,
+button,
+[role="button"],
+label[for],
+select,
+input[type="checkbox"],
+input[type="radio"] {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ccircle cx='14' cy='14' r='2' fill='%23c0392b' opacity='0.9'/%3E%3Ccircle cx='14' cy='14' r='6' fill='none' stroke='%23c0392b' stroke-width='1' opacity='0.4'/%3E%3Cline x1='14' y1='2' x2='14' y2='9' stroke='%23c0392b' stroke-width='1.4'/%3E%3Cline x1='14' y1='19' x2='14' y2='26' stroke='%23c0392b' stroke-width='1.4'/%3E%3Cline x1='2' y1='14' x2='9' y2='14' stroke='%23c0392b' stroke-width='1.4'/%3E%3Cline x1='19' y1='14' x2='26' y2='14' stroke='%23c0392b' stroke-width='1.4'/%3E%3C/svg%3E") 14 14, pointer;
+}
+
+/* ─── Custom scrollbar ─── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a1515;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7b1a1a;
+}
+
+/* ─── Selection color ─── */
+::selection {
+  background: rgba(192, 57, 43, 0.30);
+  color: #f0f0f0;
+}
+
+/* ─── Navbar logo cursor blink ─── */
+.navbar-cursor {
+  animation: navbar-blink 1s step-end infinite;
+  color: #c0392b;
+}
+
+@keyframes navbar-blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ─── Typewriter cursor ─── */
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: #c0392b;
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: tw-blink 0.9s step-end infinite;
+}
+
+@keyframes tw-blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ─── Green pulse status dot ─── */
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5);
+  animation: status-pulse 2s ease-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes status-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5);
+  }
+
+  70% {
+    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+
+
+
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
